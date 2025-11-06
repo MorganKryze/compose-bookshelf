@@ -1,23 +1,21 @@
 services:
-  calibre-web:
-    image: lscr.io/linuxserver/calibre-web:latest
-    container_name: calibre-web
+  wizarr:
+    image: ghcr.io/wizarrrr/wizarr
+    container_name: wizarr
     restart: unless-stopped
     environment:
       PUID: ${PUID}
       PGID: ${PGID}
       TZ: ${TZ}
-      DOCKER_MODS: linuxserver/mods:universal-calibre
+      DISABLE_BUILTIN_AUTH: ${DISABLE_BUILTIN_AUTH}
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ${DOCKER_VOLUMES_PATH}/calibre/config:/config
-      - ${CALIBRE_LIBRARY_PATH}/library:/books
+      - ${DOCKER_VOLUMES_PATH}/wizarr:/data
     expose:
-      - 8083
+      - 5690
     networks:
       - pangolin
-
 networks:
   pangolin:
     external: true
