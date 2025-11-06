@@ -39,7 +39,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 - [ ] Jellyfin - Media server for streaming your personal media collection.
 - [ ] Jellyseerr - Media request and management tool for Jellyfin.
 - [ ] JellyStat - Statistics and analytics for your Jellyfin server.
-- [x] Wizarr - Invitations and user management for Jellyfin.
+- [x] [Wizarr](https://github.com/MorganKryze/compose-bookshelf/blob/main/services/media/wizarr/compose.yml) - Invitations and user management for Jellyfin.
 - [ ] Calibre-Web - Web-based interface for managing your eBook collection.
 
 ### Media conversion
