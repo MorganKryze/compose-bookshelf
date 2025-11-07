@@ -65,6 +65,19 @@ Feel free to explore the different services and deploy them on your own infrastr
 
 ## Usage
 
+### Important notice: Pangolin
+
+All the services in this repository are designed to be deployed using [Pangolin](https://github.com/fosrl/pangolin), an identity-based, multi-site remote access platform using WireGuard®. Pangolin simplifies secure access to your self-hosted services without exposing them directly to the internet. It handles authentication and encryption, ensuring that only authorized users can access your services with proper tls certificates.
+
+With that said, I strongly recommend you not to use the `compose.yml` files as-is if you are **not** using Pangolin:
+
+- Remove any network reference to `pangolin`.
+- The `ports` directive should be added back to expose the services on your host machine. The `expose` directive only makes the ports accessible to linked services within the same Docker network.
+
+If you encounter any issues or need assistance adapting the configurations for non-Pangolin setups, please feel free to [open an issue](https://github.com/MorganKryze/compose-bookshelf/issues) or reach out for help.
+
+### Steps
+
 First, clone the repository to your local machine:
 
 ```bash
