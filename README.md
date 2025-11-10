@@ -11,57 +11,57 @@ Feel free to explore the different services and deploy them on your own infrastr
 
 ### Security & privacy
 
-- [ ] SearXNG - Privacy-respecting metasearch engine.
-- [ ] Vaultwarden - Self-hosted password manager.
-- [ ] Enclosed - Secure pastebin and tiny file sharing service.
+- [ ] SearXNG - Privacy-respecting metasearch engine. ([project](https://github.com/searxng/searxng))
+- [ ] Vaultwarden - Self-hosted password manager. ([project](https://github.com/dani-garcia/vaultwarden))
+- [ ] Enclosed - Secure pastebin and tiny file sharing service. ([project](https://github.com/CorentinTh/enclosed))
 
 ### Finances
 
-- [ ] MaybeOS - Personal finance and budgeting tool.
-- [ ] Wapy.dev - Subsciption tracker and bill reminder service.
+- [ ] Sure - Personal finance and budgeting tool. ([project](https://github.com/we-promise/sure))
+- [ ] Wapy.dev - Subsciption tracker and bill reminder service. ([project](https://github.com/meceware/wapy.dev))
 
 ### Online editors
 
-- [ ] Excalidraw - Virtual whiteboard for sketching and diagramming.
-- [ ] Drawio - Diagramming tool for creating flowcharts and diagrams.
-- [ ] Etherpad - Collaborative real-time text editor.
-- [ ] Docmost - Collaborative markdown editor with live preview.
+- [ ] Excalidraw - Virtual whiteboard for sketching and diagramming. ([project](https://github.com/excalidraw/excalidraw?tab=readme-ov-file))
+- [ ] Drawio - Diagramming tool for creating flowcharts and diagrams. ([project](https://github.com/jgraph/drawio))
+- [ ] Etherpad - Collaborative real-time text editor. ([project](https://github.com/ether/etherpad-lite))
+- [ ] Docmost - Collaborative markdown editor with live preview. ([project](https://github.com/docmost/docmost))
 
 ### Files
 
-- [ ] FileBrowser - Web-based file manager for browsing and managing files.
-- [ ] Erugo - Simple file hosting and sharing service.
-- [ ] Immich - Image and video backup solution with web interface.
-- [ ] Kiwix - Offline reader for web content like Wikipedia.
+- [ ] FileBrowser Quantum - Web-based file manager for browsing and managing files. ([project](https://github.com/gtsteffaniak/filebrowser))
+- [ ] Erugo - Simple file hosting and sharing service. ([project](https://github.com/ErugoOSS/Erugo))
+- [ ] Immich - Image and video backup solution with web interface. ([project](https://github.com/immich-app/immich))
+- [ ] Kiwix - Offline reader for web content like Wikipedia. ([project](https://github.com/kiwix/kiwix-tools/tree/main))
 
 ### Media
 
-- [ ] Jellyfin - Media server for streaming your personal media collection.
-- [ ] Jellyseerr - Media request and management tool for Jellyfin.
-- [ ] JellyStat - Statistics and analytics for your Jellyfin server.
-- [x] [Wizarr](https://github.com/MorganKryze/compose-bookshelf/blob/main/services/media/wizarr/compose.yml) - Invitations and user management for Jellyfin.
-- [x] [Calibre-Web](https://github.com/MorganKryze/compose-bookshelf/blob/main/services/media/calibre/compose.yml) - Web-based interface for managing your eBook collection.
+- [ ] Jellyfin - Media server for streaming your personal media collection. ([project](https://github.com/jellyfin/jellyfin))
+- [ ] Jellyseerr - Media request and management tool for Jellyfin. ([project](https://github.com/seerr-team/seerr))
+- [ ] JellyStat - Statistics and analytics for your Jellyfin server. ([project](https://github.com/CyferShepard/Jellystat))
+- [x] [Wizarr](./services/media/wizarr/compose.yml) - Invitations and user management for Jellyfin. ([project](https://github.com/wizarrrr/wizarr))
+- [x] [Calibre-Web](./services/media/calibre/compose.yml) - Web-based interface for managing your eBook collection. ([project](https://github.com/janeczku/calibre-web))
 
 ### Media conversion
 
-- [ ] StirlingPDF - PDF conversion and manipulation service.
-- [ ] ConvertX - General file conversion service for images and videos.
-- [ ] Omnitools - A suite of media conversion and processing tools.
-- [ ] Mazanoke - Picture file conversion and management service.
+- [ ] StirlingPDF - PDF conversion and manipulation service. ([project](https://github.com/Stirling-Tools/Stirling-PDF))
+- [ ] ConvertX - General file conversion service for images and videos. ([project](https://github.com/C4illin/ConvertX))
+- [ ] Omnitools - A suite of media conversion and processing tools. ([project](https://github.com/iib0011/omni-tools))
+- [ ] Mazanoke - Picture file conversion and management service. ([project](https://github.com/civilblur/mazanoke))
 
 ### Monitoring
 
-- [ ] Uptime Kuma - Self-hosted monitoring tool for websites and services.
+- [ ] Uptime Kuma - Self-hosted monitoring tool for websites and services. ([project](https://github.com/louislam/uptime-kuma))
 
 ### Miscellaneous
 
-- [ ] OpenSpeedTest - Self-hosted internet speed test service.
-- [ ] LinkStack - Home to all your important links and contacts.
-- [ ] Kutt - URL shortener service.
-- [ ] Rally - Meeting and event scheduling tool.
-- [ ] IT tools - Collection of useful IT tools and utilities.
-- [ ] Ntfy - Simple notification service for sending push notifications.
-- [ ] Mealie - Recipe management and meal planning application.
+- [ ] OpenSpeedTest - Self-hosted internet speed test service. ([project](https://github.com/openspeedtest/Speed-Test))
+- [ ] LinkStack - Home to all your important links and contacts. ([project](https://github.com/LinkStackOrg/LinkStack))
+- [ ] Kutt - URL shortener service. ([project](https://github.com/thedevs-network/kutt))
+- [ ] Rally - Meeting and event scheduling tool. ([project](https://github.com/lukevella/rallly))
+- [ ] IT tools - Collection of useful IT tools and utilities. ([project](https://github.com/CorentinTh/it-tools))
+- [ ] Ntfy - Simple notification service for sending push notifications. ([project](https://github.com/binwiederhier/ntfy))
+- [ ] Mealie - Recipe management and meal planning application. ([project](https://github.com/mealie-recipes/mealie))
 
 ## Usage
 
