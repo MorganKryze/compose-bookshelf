@@ -1,0 +1,93 @@
+x-db-env: &a1
+  POSTGRES_USER: ${POSTGRES_USER}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  POSTGRES_DB: ${POSTGRES_DB}
+x-rails-env: &a2
+  <<: *a1
+  SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+  SELF_HOSTED: "true"
+  RAILS_FORCE_SSL: "false"
+  RAILS_ASSUME_SSL: "false"
+  DB_HOST: db
+  DB_PORT: 5432
+  REDIS_URL: redis://redis:6379/1
+
+services:
+  web:
+    image: ghcr.io/we-promise/sure:latest
+    container_name: sure_web
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      <<: *a2
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/sure/app:/rails/storage
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    expose:
+      - 3000
+    networks:
+      - sure_net
+      - pangolin
+  worker:
+    image: ghcr.io/we-promise/sure:latest
+    command: bundle exec sidekiq
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      <<: *a2
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/sure/app:/rails/storage
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - sure_net
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      <<: *a1
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/sure/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sure_net
+  redis:
+    image: redis:latest
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/sure/redis:/data
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - ping
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sure_net
+
+networks:
+  sure_net:
+    driver: bridge
+  pangolin:
+    external: true

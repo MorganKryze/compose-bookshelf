@@ -17,7 +17,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 
 ### Finances
 
-- [ ] Sure - Personal finance and budgeting tool. ([project](https://github.com/we-promise/sure))
+- [x] [Sure](./services/finances/sure/compose.yml) - Personal finance and budgeting tool. ([project](https://github.com/we-promise/sure))
 - [ ] Wapy.dev - Subsciption tracker and bill reminder service. ([project](https://github.com/meceware/wapy.dev))
 
 ### Online editors
