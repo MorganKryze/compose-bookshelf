@@ -1,0 +1,77 @@
+server:
+  port: 80
+  baseURL: '/'
+  database: /home/filebrowser/data/database.db
+  logging:
+    - output: stdout
+      levels: info|warning|error
+      apiLevels: disabled
+    - output: /logs/errors.log
+      levels: error|warning
+      apiLevels: disabled
+      noColors: true
+    - output: /logs/access.log
+      levels: info|debug
+      apiLevels: disabled
+      noColors: true
+  sources:
+    # You may update the sources according to your needs
+    - path: /data
+      name: Data
+    - path: /docker-volumes
+      name: Docker
+  cacheDir: /home/filebrowser/tmp
+  maxArchiveSize: 50
+auth:
+  tokenExpirationHours: 2 # the number of hours a token is valid for
+  methods:
+    password:
+      enabled: true
+      minLength: 20 # minimum pasword length required, default is 5.
+      signup: false
+  adminUsername: 'admin'
+  adminPassword: 'CHANGE-ME'
+  totpSecret: 'CHANGE-ME'
+frontend:
+  name: Filebrowser # display name
+  disableDefaultLinks: true
+  disableUsedPercentage: false
+  externalLinks:
+    - text: 'Dashboard' # Optional, but you can add custom links to the navbar
+      title: 'LibreSoftware service'
+      url: 'https://libresoftware.cloud/'
+  disableNavButtons: false
+userDefaults:
+  editorQuickSave: false
+  hideSidebarFileActions: false
+  disableQuickToggles: false
+  disableSearchOptions: false
+  stickySidebar: true
+  darkMode: true
+  locale: 'en'
+  viewMode: 'normal'
+  singleClick: false
+  showHidden: true
+  dateFormat: false
+  gallerySize: 3
+  themeColor: 'var(--blue)'
+  quickDownload: true
+  lockPassword: false
+  disableSettings: false
+  preview:
+    image: true
+    popup: true
+    video: true
+    office: true
+    highQuality: false
+  permissions:
+    admin: false
+    modify: false
+    share: false
+    api: false
+  loginMethod: 'password'
+  disableUpdateNotifications: false
+  deleteWithoutConfirming: false
+  fileLoading:
+    maxConcurrentUpload: 10
+    uploadChunkSizeMb: 10

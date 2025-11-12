@@ -1,0 +1,29 @@
+services:
+  filexplorer:
+    image: gtstef/filebrowser:latest
+    container_name: filexplorer
+    restart: unless-stopped
+    environment:
+      FILEBROWSER_CONFIG: ${FILEBROWSER_CONFIG}
+      TZ: ${TZ}
+    security_opt:
+      - no-new-privileges:true
+    user: ${PUID}:${PGID}
+    volumes:
+      # First volume is the base folder to be managed by filebrowser
+      - ${BASE_FOLDER}:/data
+      # Second volume is for all docker volumes of the host
+      - ${DOCKER_VOLUMES_PATH}:/docker-volumes
+      # Olter volumes are for filebrowser config, logs, cache, and tmp
+      - ${DOCKER_VOLUMES_PATH}/filebrowser/data:/home/filebrowser/data
+      - ${DOCKER_VOLUMES_PATH}/filebrowser/tmp:/home/filebrowser/tmp
+      - ${DOCKER_VOLUMES_PATH}/filebrowser/logs:/logs
+      - ${DOCKER_VOLUMES_PATH}/filebrowser/cache:/.cache
+    expose:
+      - 80
+    networks:
+      - pangolin
+
+networks:
+  pangolin:
+    external: true
