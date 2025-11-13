@@ -45,7 +45,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 ### Media conversion
 
 - [ ] StirlingPDF - PDF conversion and manipulation service. ([project](https://github.com/Stirling-Tools/Stirling-PDF))
-- [ ] ConvertX - General file conversion service for images and videos. ([project](https://github.com/C4illin/ConvertX))
+- [x] [ConvertX](./services/media-conversion/convertx/compose.yml) - General file conversion service for images and videos. ([project](https://github.com/C4illin/ConvertX))
 - [ ] Omnitools - A suite of media conversion and processing tools. ([project](https://github.com/iib0011/omni-tools))
 - [ ] Mazanoke - Picture file conversion and management service. ([project](https://github.com/civilblur/mazanoke))
 

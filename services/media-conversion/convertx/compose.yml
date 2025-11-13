@@ -1,0 +1,25 @@
+services:
+  convertx:
+    image: ghcr.io/c4illin/convertx
+    container_name: convertx
+    restart: unless-stopped
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      ALLOW_UNAUTHENTICATED: ${ALLOW_UNAUTHENTICATED}
+      ACCOUNT_REGISTRATION: ${ACCOUNT_REGISTRATION}
+      AUTO_DELETE_EVERY_N_HOURS: ${AUTO_DELETE_EVERY_N_HOURS}
+      HIDE_HISTORY: ${HIDE_HISTORY}
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/convertx/data:/app/data
+    expose:
+      - 3000
+    networks:
+      - pangolin
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+
+networks:
+  pangolin:
+    external: true
