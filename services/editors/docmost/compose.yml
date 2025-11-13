@@ -1,0 +1,55 @@
+services:
+  docmost:
+    image: docmost/docmost:latest
+    container_name: docmost
+    restart: unless-stopped
+    environment:
+      APP_URL: ${APP_URL}
+      APP_SECRET: ${APP_SECRET}
+      DATABASE_URL: postgresql://docmost:${DB_PASSWORD}@db:5432/docmost?schema=public
+      REDIS_URL: redis://redis:6379
+      PORT: ${PORT}
+      JWT_TOKEN_EXPIRES_IN: ${JWT_TOKEN_EXPIRES_IN}
+      DISABLE_TELEMETRY: ${DISABLE_TELEMETRY}
+      DRAWIO_URL: ${DRAWIO_URL}
+    security_opt:
+      - no-new-privileges:true
+    user: ${PUID}:${PGID}
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/docmost/app:/app/data/storage
+    expose:
+      - 3000
+    networks:
+      - docmost_internal
+      - pangolin
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: docmost
+      POSTGRES_USER: docmost
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/docmost/postgres:/var/lib/postgresql/data
+    networks:
+      - docmost_internal
+
+  redis:
+    image: redis:7.2-alpine
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/docmost/redis:/data
+    networks:
+      - docmost_internal
+
+networks:
+  docmost_internal:
+    driver: bridge
+  pangolin:
+    external: true
