@@ -1,0 +1,17 @@
+services:
+  mazanoke:
+    image: ghcr.io/civilblur/mazanoke:latest
+    container_name: mazanoke
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    expose:
+      - 80
+    networks:
+      - pangolin
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+
+networks:
+  pangolin:
+    external: true

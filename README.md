@@ -49,7 +49,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 - [x] [StirlingPDF](./services/media-conversion/stirling-pdf/compose.yml) - PDF conversion and manipulation service. ([project link](https://github.com/Stirling-Tools/Stirling-PDF))
 - [x] [ConvertX](./services/media-conversion/convertx/compose.yml) - General file conversion service for images and videos. ([project link](https://github.com/C4illin/ConvertX))
 - [x] [Omnitools](./services/media-conversion/omni-tools/compose.yml) - A suite of media conversion and processing tools. ([project link](https://github.com/iib0011/omni-tools))
-- [ ] Mazanoke - Picture file conversion and management service. ([project link](https://github.com/civilblur/mazanoke))
+- [x] [Mazanoke](./services/media-conversion/mazanoke/compose.yml) - Picture file conversion and management service. ([project link](https://github.com/civilblur/mazanoke))
 
 ### Monitoring
 
