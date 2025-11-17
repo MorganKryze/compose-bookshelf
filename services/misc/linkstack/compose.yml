@@ -1,0 +1,31 @@
+services:
+  linkstack:
+    image: linkstackorg/linkstack:latest
+    container_name: linkstack
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+      SERVER_ADMIN: ${SERVER_ADMIN}
+      LOG_LEVEL: ${LOG_LEVEL}
+      PHP_MEMORY_LIMIT: ${PHP_MEMORY_LIMIT}
+      UPLOAD_MAX_FILESIZE: ${UPLOAD_MAX_FILESIZE}
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - linkstack_persistent:/htdocs
+    expose:
+      - 80
+    networks:
+      - pangolin
+
+networks:
+  pangolin:
+    external: true
+
+volumes:
+  linkstack_persistent:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ${DOCKER_VOLUMES_PATH}/linkstack

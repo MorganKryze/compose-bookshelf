@@ -58,7 +58,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 ### Miscellaneous
 
 - [x] [OpenSpeedTest](./services/misc/openspeedtest/compose.yml) - Self-hosted internet speed test service. ([project link](https://github.com/openspeedtest/Speed-Test))
-- [ ] LinkStack - Home to all your important links and contacts. ([project link](https://github.com/LinkStackOrg/LinkStack))
+- [x] [LinkStack](./services/misc/linkstack/compose.yml) - Home to all your important links and contacts. ([project link](https://github.com/LinkStackOrg/LinkStack))
 - [ ] Kutt - URL shortener service. ([project link](https://github.com/thedevs-network/kutt))
 - [ ] Rally - Meeting and event scheduling tool. ([project link](https://github.com/lukevella/rallly))
 - [x] [IT tools](./services/misc/it-tools/compose.yml) - Collection of useful IT tools and utilities. ([project link](https://github.com/CorentinTh/it-tools))
