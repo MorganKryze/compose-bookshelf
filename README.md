@@ -26,7 +26,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 
 - [x] [Excalidraw](./services/editors/excalidraw/compose.yml) - Virtual whiteboard for sketching and diagramming. ([project link](https://github.com/excalidraw/excalidraw?tab=readme-ov-file))
 - [x] [Drawio](./services/editors/drawio/compose.yml) - Diagramming tool for creating flowcharts and diagrams. ([project link](https://github.com/jgraph/drawio))
-- [ ] Etherpad - Collaborative real-time text editor. ([project link](https://github.com/ether/etherpad-lite))
+- [x] [Etherpad](./services/editors/ether-pad/compose.yml) - Collaborative real-time text editor. ([project link](https://github.com/ether/etherpad-lite))
 - [x] [Docmost](./services/editors/docmost/compose.yml) - Collaborative markdown editor with live preview. ([project link](https://github.com/docmost/docmost))
 
 ### Files

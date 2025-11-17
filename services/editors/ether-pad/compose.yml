@@ -1,0 +1,55 @@
+services:
+  etherpad:
+    image: etherpad/etherpad:latest
+    container_name: etherpad
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    environment:
+      NODE_ENV: production
+      ADMIN_PASSWORD: ${DOCKER_COMPOSE_APP_ADMIN_PASSWORD}
+      DB_CHARSET: ${DOCKER_COMPOSE_APP_DB_CHARSET}
+      DB_HOST: postgres
+      DB_NAME: ${DOCKER_COMPOSE_POSTGRES_DATABASE}
+      DB_PASS: ${DOCKER_COMPOSE_POSTGRES_PASSWORD}
+      DB_PORT: ${DOCKER_COMPOSE_POSTGRES_PORT}
+      DB_TYPE: 'postgres'
+      DB_USER: ${DOCKER_COMPOSE_POSTGRES_USER}
+      # For now, the env var DEFAULT_PAD_TEXT cannot be unset or empty; it seems to be mandatory in the latest version of etherpad
+      DEFAULT_PAD_TEXT: ${DOCKER_COMPOSE_APP_DEFAULT_PAD_TEXT:- }
+      DISABLE_IP_LOGGING: ${DOCKER_COMPOSE_APP_DISABLE_IP_LOGGING}
+      SOFFICE: ${DOCKER_COMPOSE_APP_SOFFICE:-null}
+      TRUST_PROXY: true
+    security_opt:
+      - no-new-privileges:true
+    user: ${PUID}:${PGID}
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/etherpad/plugins:/opt/etherpad-lite/src/plugin_packages
+      - ${DOCKER_VOLUMES_PATH}/etherpad/var:/opt/etherpad-lite/var
+    expose:
+      - 9001
+    networks:
+      - pangolin
+      - etherpad-internal
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DOCKER_COMPOSE_POSTGRES_DATABASE}
+      POSTGRES_PASSWORD: ${DOCKER_COMPOSE_POSTGRES_PASSWORD}
+      POSTGRES_PORT: ${DOCKER_COMPOSE_POSTGRES_PORT}
+      POSTGRES_USER: ${DOCKER_COMPOSE_POSTGRES_USER}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/etherpad/postgres_data:/var/lib/postgresql/data/pgdata
+    networks:
+      - etherpad-internal
+
+networks:
+  etherpad-internal:
+    driver: bridge
+  pangolin:
+    external: true
