@@ -1,0 +1,17 @@
+services:
+  openspeedtest:
+    image: openspeedtest/latest
+    container_name: openspeedtest
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    expose:
+      - 3000
+    networks:
+      - pangolin
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+
+networks:
+  pangolin:
+    external: true
