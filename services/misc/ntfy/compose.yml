@@ -1,0 +1,26 @@
+services:
+  ntfy:
+    image: binwiederhier/ntfy:latest
+    container_name: ntfy
+    restart: unless-stopped
+    command:
+      - serve
+    environment:
+      TZ: ${TZ}
+      NTFY_BASE_URL: ${NTFY_BASE_URL}
+      NTFY_BEHIND_PROXY: ${NTFY_BEHIND_PROXY}
+      NTFY_UPSTREAM_BASE_URL: ${NTFY_UPSTREAM_BASE_URL}
+    # user: ${PUID}:${PGID}
+    # volumes:
+    #   - ${DOCKER_VOLUMES_PATH}/ntfy/cache:/var/cache/ntfy
+    #   - ${DOCKER_VOLUMES_PATH}/ntfy/etc:/etc/ntfy
+    expose:
+      - 80
+    networks:
+      - pangolin
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+
+networks:
+  pangolin:
+    external: true
