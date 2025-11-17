@@ -23,7 +23,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 ### Online editors
 
 - [ ] Excalidraw - Virtual whiteboard for sketching and diagramming. ([project](https://github.com/excalidraw/excalidraw?tab=readme-ov-file))
-- [ ] Drawio - Diagramming tool for creating flowcharts and diagrams. ([project](https://github.com/jgraph/drawio))
+- [x] [Drawio](./services/editors/drawio/compose.yml) - Diagramming tool for creating flowcharts and diagrams. ([project](https://github.com/jgraph/drawio))
 - [ ] Etherpad - Collaborative real-time text editor. ([project](https://github.com/ether/etherpad-lite))
 - [x] [Docmost](./services/editors/docmost/compose.yml) - Collaborative markdown editor with live preview. ([project](https://github.com/docmost/docmost))
 
