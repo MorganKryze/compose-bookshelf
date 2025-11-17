@@ -1,0 +1,21 @@
+services:
+  enclosed:
+    image: corentinth/enclosed
+    container_name: enclosed
+    restart: unless-stopped
+    environment:
+      PUBLIC_IS_SETTING_NO_EXPIRATION_ALLOWED: ${PUBLIC_IS_SETTING_NO_EXPIRATION_ALLOWED}
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${VOLUMES_PATH}/enclosed:/app/.data
+    expose:
+        - 8787
+    networks:
+      - pangolin
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+
+networks:
+  pangolin:
+    external: true
