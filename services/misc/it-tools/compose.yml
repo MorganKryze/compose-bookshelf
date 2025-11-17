@@ -1,0 +1,17 @@
+services:
+  it-tools:
+    image: corentinth/it-tools:latest
+    container_name: ittools
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    expose:
+      - 80
+    networks:
+      - pangolin
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+
+networks:
+  pangolin:
+    external: true

@@ -59,7 +59,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 - [ ] LinkStack - Home to all your important links and contacts. ([project link](https://github.com/LinkStackOrg/LinkStack))
 - [ ] Kutt - URL shortener service. ([project link](https://github.com/thedevs-network/kutt))
 - [ ] Rally - Meeting and event scheduling tool. ([project link](https://github.com/lukevella/rallly))
-- [ ] IT tools - Collection of useful IT tools and utilities. ([project link](https://github.com/CorentinTh/it-tools))
+- [x] [IT tools](./services/misc/it-tools/compose.yml) - Collection of useful IT tools and utilities. ([project link](https://github.com/CorentinTh/it-tools))
 - [ ] Ntfy - Simple notification service for sending push notifications. ([project link](https://github.com/binwiederhier/ntfy))
 - [ ] Mealie - Recipe management and meal planning application. ([project link](https://github.com/mealie-recipes/mealie))
 
