@@ -1,0 +1,21 @@
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    restart: unless-stopped
+    environment:
+      UPTIME_KUMA_DB_PASSWORD: ${DB_PASSWORD}
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/uptime-kuma:/app/data
+    expose:
+      - 3001
+    networks:
+      - pangolin
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+
+networks:
+  pangolin:
+    external: true

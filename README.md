@@ -51,7 +51,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 
 ### Monitoring
 
-- [ ] Uptime Kuma - Self-hosted monitoring tool for websites and services. ([project link](https://github.com/louislam/uptime-kuma))
+- [x] [Uptime Kuma](./services/monitoring/uptime-kuma/compose.yml) - Self-hosted monitoring tool for websites and services. ([project link](https://github.com/louislam/uptime-kuma))
 
 ### Miscellaneous
 
