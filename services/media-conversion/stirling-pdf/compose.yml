@@ -1,0 +1,26 @@
+services:
+  stirling-pdf:
+    image: stirlingtools/stirling-pdf:latest-fat
+    container_name: stirling-pdf
+    restart: unless-stopped
+    environment:
+      DOCKER_ENABLE_SECURITY: ${DOCKER_ENABLE_SECURITY}
+      LANGS: ${LANGS}
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/stirling-pdf/trainingData:/usr/share/tessdata
+      - ${DOCKER_VOLUMES_PATH}/stirling-pdf/extraConfigs:/configs
+      - ${DOCKER_VOLUMES_PATH}/stirling-pdf/customFiles:/customFiles
+      - ${DOCKER_VOLUMES_PATH}/stirling-pdf/logs:/logs
+      - ${DOCKER_VOLUMES_PATH}/stirling-pdf/pipeline:/pipeline
+    expose:
+      - 8080
+    networks:
+      - pangolin
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+
+networks:
+  pangolin:
+    external: true
