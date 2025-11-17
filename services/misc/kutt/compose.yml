@@ -1,0 +1,20 @@
+services:
+  server:
+    image: kutt/kutt:latest
+    container_name: kutt
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/kutt/db_data_sqlite:/var/lib/kutt
+      - ${DOCKER_VOLUMES_PATH}/kutt/custom:/kutt/custom
+    expose:
+      - ${PORT}
+    networks:
+      - pangolin
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+
+networks:
+  pangolin:
+    external: true
