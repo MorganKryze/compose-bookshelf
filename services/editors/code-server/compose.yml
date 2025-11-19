@@ -1,0 +1,20 @@
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: code-server
+    restart: unless-stopped
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/code-server/config:/config
+      - ${DOCKER_PATH}:/docker
+    expose:
+      - 8443
+    networks:
+      - pangolin
+
+networks:
+  pangolin:
+    external: true

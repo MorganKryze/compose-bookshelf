@@ -28,6 +28,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 - [x] [Drawio](./services/editors/drawio/compose.yml) - Diagramming tool for creating flowcharts and diagrams. ([project link](https://github.com/jgraph/drawio))
 - [x] [Etherpad](./services/editors/ether-pad/compose.yml) - Collaborative real-time text editor. ([project link](https://github.com/ether/etherpad-lite))
 - [x] [Docmost](./services/editors/docmost/compose.yml) - Collaborative markdown editor with live preview. ([project link](https://github.com/docmost/docmost))
+- [x] [Code Server](./services/editors/code-server/compose.yml) - VS Code in the browser. ([project link](https://github.com/coder/code-server))
 
 ### Files
 
