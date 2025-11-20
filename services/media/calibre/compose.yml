@@ -11,8 +11,8 @@ services:
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ${DOCKER_VOLUMES_PATH}/calibre/config:/config
-      - ${CALIBRE_LIBRARY_PATH}/library:/books
+      - ${DOCKER_VOLUMES_PATH}/calibre-web/config:/config
+      - ${DOCKER_VOLUMES_PATH}/calibre-web/library:/books
     expose:
       - 8083
     networks:
