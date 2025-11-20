@@ -10,6 +10,9 @@ services:
     volumes:
       - ${DOCKER_VOLUMES_PATH}/code-server/config:/config
       - ${DOCKER_PATH}:/docker
+      # You may uncomment and add extra paths if needed
+      #- ${EXTRA_PATH_1}:/extra1
+      #- ${EXTRA_PATH_2}:/extra2
     expose:
       - 8443
     networks:
