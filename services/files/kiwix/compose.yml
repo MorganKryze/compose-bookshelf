@@ -1,0 +1,23 @@
+services:
+  kiwix:
+    image: ghcr.io/kiwix/kiwix-serve:latest
+    container_name: kiwix
+    restart: unless-stopped
+    user: ${PUID}:${PGID}
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/kiwix/zims:/data:ro
+    command:
+      - "*.zim"
+    read_only: true
+    cap_drop:
+      - ALL
+    expose:
+      - 8080
+    networks:
+      - pangolin
+
+networks:
+  pangolin:
+    external: true

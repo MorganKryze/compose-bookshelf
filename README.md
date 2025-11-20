@@ -40,7 +40,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 - [x] [FileBrowser Quantum](./services/files/filebrowser/compose.yml) - Web-based file manager for browsing and managing files. ([project link](https://github.com/gtsteffaniak/filebrowser))
 - [ ] Erugo - Simple file hosting and sharing service. ([project link](https://github.com/ErugoOSS/Erugo))
 - [ ] Immich - Image and video backup solution with web interface. ([project link](https://github.com/immich-app/immich))
-- [ ] Kiwix - Offline reader for web content like Wikipedia. ([project link](https://github.com/kiwix/kiwix-tools/tree/main))
+- [x] [Kiwix](./services/files/kiwix/compose.yml) - Offline reader for web content like Wikipedia. ([project link](https://github.com/kiwix/kiwix-tools/tree/main))
 
 ### Media
 
