@@ -11,6 +11,11 @@ Feel free to explore the different services and deploy them on your own infrastr
 
 [Awesome docker compose](https://awesome-docker-compose.com/apps#understanding-the-app-page-structure) and [Awesome self-hosted](https://awesome-selfhosted.net/) lists are great resources to discover new or specific self-hosted applications, I definitely recommend checking them out!
 
+### Deploying
+
+- [x] [Dockge](./services/deploying/dockge/compose.yml) - Simple web interface for managing Docker containers. ([project link](https://github.com/louislam/dockge))
+- [x] [Newt](./services/deploying/newt/compose.yml) - WireGuard® custom endpoint developped by the Pangolin team. ([project link](https://github.com/fosrl/newt))
+
 ### Security & privacy
 
 - [ ] SearXNG - Privacy-respecting metasearch engine. ([project link](https://github.com/searxng/searxng))

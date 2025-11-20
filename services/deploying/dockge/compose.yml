@@ -1,0 +1,19 @@
+services:
+  dockge:
+    image: louislam/dockge:1
+    container_name: dockge
+    restart: unless-stopped
+    environment:
+      DOCKGE_STACKS_DIR: /opt/stacks
+    volumes:
+      - ${STACKS_PATH}:/opt/stacks
+      - ${DOCKER_VOLUMES_PATH}/dockge/data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    expose:
+      - 5001
+    networks:
+      - pangolin
+
+networks:
+  pangolin:
+    external: true
