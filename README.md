@@ -70,7 +70,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 - [ ] Rally - Meeting and event scheduling tool. ([project link](https://github.com/lukevella/rallly))
 - [x] [IT tools](./services/misc/it-tools/compose.yml) - Collection of useful IT tools and utilities. ([project link](https://github.com/CorentinTh/it-tools))
 - [x] [Ntfy](./services/misc/ntfy/compose.yml) - Simple notification service for sending push notifications. ([project link](https://github.com/binwiederhier/ntfy))
-- [ ] Mealie - Recipe management and meal planning application. ([project link](https://github.com/mealie-recipes/mealie))
+- [x] [Mealie](./services/misc/mealie/compose.yml) - Recipe management and meal planning application. ([project link](https://github.com/mealie-recipes/mealie))
 
 ## Usage
 

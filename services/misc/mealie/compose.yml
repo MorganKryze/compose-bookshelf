@@ -1,0 +1,72 @@
+services:
+  mealie:
+    image: hkotel/mealie
+    container_name: mealie
+    restart: unless-stopped
+    environment:
+      ALLOW_SIGNUP: ${ALLOW_SIGNUP}
+      LOG_LEVEL: ${LOG_LEVEL}
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+      BASE_URL: ${BASE_URL}
+      DB_ENGINE: postgres # Optional: 'sqlite', 'postgres'
+      # =====================================
+      # Postgres Config
+      POSTGRES_USER: mealie
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_SERVER: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: mealie
+      # =====================================
+      # Email Configuration
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_FROM_NAME: ${SMTP_FROM_NAME}
+      SMTP_AUTH_STRATEGY: ${SMTP_AUTH_STRATEGY}
+      SMTP_FROM_EMAIL: ${SMTP_FROM_EMAIL}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/mealie/app:/app/data
+    deploy:
+      resources:
+        limits:
+          memory: 1000M
+    security_opt:
+      - no-new-privileges:true
+    expose:
+      - 9000
+    networks:
+      - pangolin
+      - mealie-internal
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: mealie
+      PGUSER: mealie
+      POSTGRES_DB: mealie
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/mealie/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD
+        - pg_isready
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    networks:
+      - mealie-internal
+
+networks:
+  mealie-internal:
+    driver: bridge
+  pangolin:
+    external: true
