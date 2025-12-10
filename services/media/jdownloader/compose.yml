@@ -1,0 +1,25 @@
+services:
+  jdownloader:
+    image: jlesage/jdownloader-2:latest
+    container_name: jdownloader
+    restart: unless-stopped
+    environment:
+      USER_ID: ${PUID}
+      GROUP_ID: ${PGID}
+      TZ: ${TZ}
+      KEEP_APP_RUNNING: ${KEEP_APP_RUNNING}
+      DARK_MODE: ${DARK_MODE}
+      WEB_FILE_MANAGER: ${WEB_FILE_MANAGER}
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/jdownloader/config:/config:rw
+      - ${DOCKER_VOLUMES_PATH}/jdownloader/downloads:/output:rw
+    expose:
+      - 5800
+    networks:
+      - pangolin
+
+networks:
+  pangolin:
+    external: true

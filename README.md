@@ -49,6 +49,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 - [ ] JellyStat - Statistics and analytics for your Jellyfin server. ([project link](https://github.com/CyferShepard/Jellystat))
 - [x] [Wizarr](./services/media/wizarr/compose.yml) - Invitations and user management for Jellyfin. ([project link](https://github.com/wizarrrr/wizarr))
 - [x] [Calibre-Web](./services/media/calibre/compose.yml) - Web-based interface for managing your eBook collection. ([project link](https://github.com/janeczku/calibre-web))
+- [x] [Jdownloader](./services/media/jdownloader/compose.yml) - Download manager for automating file downloads. ([project link](https://github.com/jlesage/docker-jdownloader-2))
 
 ### Media conversion
 
