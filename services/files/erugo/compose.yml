@@ -1,0 +1,17 @@
+services:
+  erugo:
+    image: wardy784/erugo:latest
+    container_name: erugo
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/erugo/storage:/var/www/html/storage
+    expose:
+      - 80
+    networks:
+      - pangolin
+
+networks:
+  pangolin:
+    external: true
