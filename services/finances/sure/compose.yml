@@ -21,10 +21,12 @@ services:
       - .env
     environment:
       <<: *a2
+    user: ${PUID}:${PGID}
     security_opt:
       - no-new-privileges:true
     volumes:
       - ${DOCKER_VOLUMES_PATH}/sure/app:/rails/storage
+      - ${DOCKER_VOLUMES_PATH}/sure/tmp:/rails/tmp
     depends_on:
       db:
         condition: service_healthy
@@ -43,8 +45,10 @@ services:
       - .env
     environment:
       <<: *a2
+    user: ${PUID}:${PGID}
     volumes:
       - ${DOCKER_VOLUMES_PATH}/sure/app:/rails/storage
+      - ${DOCKER_VOLUMES_PATH}/sure/tmp:/rails/tmp
     depends_on:
       db:
         condition: service_healthy
@@ -59,6 +63,7 @@ services:
       - .env
     environment:
       <<: *a1
+    user: ${PUID}:${PGID}
     volumes:
       - ${DOCKER_VOLUMES_PATH}/sure/postgres:/var/lib/postgresql/data
     healthcheck:
@@ -73,6 +78,7 @@ services:
   redis:
     image: redis:latest
     restart: unless-stopped
+    user: ${PUID}:${PGID}
     volumes:
       - ${DOCKER_VOLUMES_PATH}/sure/redis:/data
     healthcheck:
