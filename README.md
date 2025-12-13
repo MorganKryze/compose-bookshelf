@@ -15,6 +15,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 
 - [x] [Dockge](./services/deploying/dockge/compose.yml) - Simple web interface for managing Docker containers. ([project link](https://github.com/louislam/dockge))
 - [x] [Newt](./services/deploying/newt/compose.yml) - WireGuard® custom endpoint developped by the Pangolin team. ([project link](https://github.com/fosrl/newt))
+- [x] [Watchtower](./services/deploying/watchtower/compose.yml) - Automated Docker container updates. ([project link](https://github.com/containrrr/watchtower?tab=readme-ov-file))
 
 ### Security & privacy
 

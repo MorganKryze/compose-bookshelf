@@ -1,0 +1,18 @@
+services:
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    restart: unless-stopped
+    environment:
+      TZ: ${TZ}
+      WATCHTOWER_NOTIFICATION_SKIP_TITLE: ${WATCHTOWER_NOTIFICATION_SKIP_TITLE}
+      WATCHTOWER_NOTIFICATION_URL: ${WATCHTOWER_NOTIFICATION_URL}
+    user: ${PUID}:${PGID}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command:
+      - '--interval'
+      - '120'
+      - '--label-enable'
+      - '--rolling-restart'
+      - '--cleanup'
