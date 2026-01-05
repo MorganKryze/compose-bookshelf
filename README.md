@@ -63,6 +63,10 @@ Feel free to explore the different services and deploy them on your own infrastr
 
 - [x] [Uptime Kuma](./services/monitoring/uptime-kuma/compose.yml) - Self-hosted monitoring tool for websites and services. ([project link](https://github.com/louislam/uptime-kuma))
 
+### Pentesting
+
+- [x] [DVWA](./services/pentesting/dvwa/compose.yml) - Damn Vulnerable Web Application for security testing. ([project link](https://github.com/digininja/DVWA))
+
 ### Miscellaneous
 
 - [x] [OpenSpeedTest](./services/misc/openspeedtest/compose.yml) - Self-hosted internet speed test service. ([project link](https://github.com/openspeedtest/Speed-Test))
