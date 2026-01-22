@@ -15,6 +15,14 @@ services:
       - pangolin
     labels:
       com.centurylinklabs.watchtower.enable: true
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
 
 networks:
   pangolin:

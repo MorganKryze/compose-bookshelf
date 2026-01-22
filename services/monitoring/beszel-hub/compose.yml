@@ -1,0 +1,32 @@
+services:
+  beszel:
+    image: henrygd/beszel:latest
+    container_name: beszel
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      APP_URL: ${BESZEL_HUB_APP_URL}
+      CONTAINER_DETAILS: ${BESZEL_HUB_CONTAINER_DETAILS}
+      MFA_OTP: ${BESZEL_HUB_MFA_OTP}
+      DISABLE_PASSWORD_AUTH: ${BESZEL_HUB_DISABLE_PASSWORD_AUTH}
+      USER_CREATION: ${BESZEL_HUB_USER_CREATION}
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/beszel-hub/data:/beszel_data
+      - ${DOCKER_VOLUMES_PATH}/beszel-hub/beszel_socket:/beszel_socket
+    expose:
+      - 8090
+    networks:
+      - pangolin
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations: 
+          cpus: '0.25'
+          memory: 128M
+
+networks:
+  pangolin:
+    external: true

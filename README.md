@@ -62,6 +62,8 @@ Feel free to explore the different services and deploy them on your own infrastr
 ### Monitoring
 
 - [x] [Uptime Kuma](./services/monitoring/uptime-kuma/compose.yml) - Self-hosted monitoring tool for websites and services. ([project link](https://github.com/louislam/uptime-kuma))
+- [x] [Beszel Hub](./services/monitoring/beszel-hub/compose.yml) - Centralized monitoring hub for Beszel agents. ([project link](https://github.com/henrygd/beszel))
+- [x] [Beszel Agent](./services/monitoring/beszel-agent/compose.yml) - Monitoring agent for collecting system metrics. ([project link](https://github.com/henrygd/beszel))
 
 ### Pentesting
 
