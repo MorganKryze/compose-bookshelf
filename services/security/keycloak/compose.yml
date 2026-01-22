@@ -1,0 +1,84 @@
+services:
+  keycloak_web:
+    image: quay.io/keycloak/keycloak:26.5.1
+    container_name: keycloak_web
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/keycloak/themes:/opt/keycloak/themes
+      - ${DOCKER_VOLUMES_PATH}/keycloak/conf:/opt/keycloak/conf
+    environment:
+      KC_DB: ${KC_DB}
+      KC_DB_URL: ${KC_DB_URL}
+      KC_DB_USERNAME: ${KC_DB_USERNAME}
+      KC_DB_PASSWORD: ${KC_DB_PASSWORD}
+
+      KC_HOSTNAME: ${KC_HOSTNAME}
+      KC_HOSTNAME_STRICT: ${KC_HOSTNAME_STRICT}
+      KC_HTTP_ENABLED: ${KC_HTTP_ENABLED}
+
+      KC_PROXY_HEADERS: ${KC_PROXY_HEADERS}
+
+      KC_LOG_LEVEL: ${KC_LOG_LEVEL}
+      KC_METRICS_ENABLED: ${KC_METRICS_ENABLED}
+      KC_HEALTH_ENABLED: ${KC_HEALTH_ENABLED}
+      KC_CACHE: ${KC_CACHE}
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KC_BOOTSTRAP_ADMIN_USERNAME}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KC_BOOTSTRAP_ADMIN_PASSWORD}
+    command: start
+    depends_on:
+      keycloakdb:
+        condition: service_healthy
+    expose:
+      - 8080
+    healthcheck:
+      test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/8080;echo -e 'GET /health/ready HTTP/1.1\r\nhost: 127.0.0.1\r\nConnection: close\r\n\r\n' >&3;if [ $? -eq 0 ]; then echo 'Healthcheck Successful';exit 0;else echo 'Healthcheck Failed';exit 1;fi;"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: '2'
+        reservations:
+          memory: 512M
+          cpus: '0.5'
+    networks:
+      - keycloak-internal
+      - pangolin
+
+  keycloakdb:
+    image: postgres:15
+    container_name: keycloakdb
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_VOLUMES_PATH}/keycloak/postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    expose:
+      - 5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '1'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+    networks:
+      - keycloak-internal
+
+networks:
+  keycloak-internal:
+    driver: bridge
+  pangolin:
+    external: true

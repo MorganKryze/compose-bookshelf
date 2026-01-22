@@ -22,6 +22,7 @@ Feel free to explore the different services and deploy them on your own infrastr
 - [ ] SearXNG - Privacy-respecting metasearch engine. ([project link](https://github.com/searxng/searxng))
 - [ ] Vaultwarden - Self-hosted password manager. ([project link](https://github.com/dani-garcia/vaultwarden))
 - [x] [Enclosed](./services/security/enclosed/compose.yml) - Secure pastebin and tiny file sharing service. ([project link](https://github.com/CorentinTh/enclosed))
+- [x] [Keycloak](./services/security/keycloak/compose.yml) - Open-source identity and access management solution. ([project link](https://github.com/keycloak/keycloak))
 
 ### Finances
 
