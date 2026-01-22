@@ -33,6 +33,14 @@ services:
       - etherpad-internal
     depends_on:
       - postgres
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
 
   postgres:
     image: postgres:15-alpine
@@ -47,6 +55,14 @@ services:
       - ${DOCKER_VOLUMES_PATH}/etherpad/postgres_data:/var/lib/postgresql/data/pgdata
     networks:
       - etherpad-internal
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
 
 networks:
   etherpad-internal:

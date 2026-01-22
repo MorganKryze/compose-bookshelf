@@ -16,3 +16,11 @@ services:
       - '--label-enable'
       - '--rolling-restart'
       - '--cleanup'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+        reservations:
+          cpus: '0.10'
+          memory: 64M

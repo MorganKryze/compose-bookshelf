@@ -16,6 +16,15 @@ services:
       - 5690
     networks:
       - pangolin
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
+
 networks:
   pangolin:
     external: true

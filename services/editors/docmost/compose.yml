@@ -27,6 +27,14 @@ services:
     depends_on:
       - db
       - redis
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
 
   db:
     image: postgres:16-alpine
@@ -39,6 +47,14 @@ services:
       - ${DOCKER_VOLUMES_PATH}/docmost/postgres:/var/lib/postgresql/data
     networks:
       - docmost_internal
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
 
   redis:
     image: redis:7.2-alpine
@@ -47,6 +63,14 @@ services:
       - ${DOCKER_VOLUMES_PATH}/docmost/redis:/data
     networks:
       - docmost_internal
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512M
+        reservations:
+          cpus: '0.10'
+          memory: 64M
 
 networks:
   docmost_internal:

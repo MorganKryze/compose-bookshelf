@@ -64,6 +64,14 @@ services:
       retries: 3
     networks:
       - mealie-internal
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
 
 networks:
   mealie-internal:

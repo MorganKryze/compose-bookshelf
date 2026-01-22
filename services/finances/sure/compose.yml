@@ -37,6 +37,15 @@ services:
     networks:
       - sure_net
       - pangolin
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
   worker:
     image: ghcr.io/we-promise/sure:latest
     command: bundle exec sidekiq
@@ -56,6 +65,15 @@ services:
         condition: service_healthy
     networks:
       - sure_net
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
   db:
     image: postgres:16
     restart: unless-stopped
@@ -75,6 +93,15 @@ services:
       retries: 5
     networks:
       - sure_net
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
   redis:
     image: redis:latest
     restart: unless-stopped
@@ -91,6 +118,14 @@ services:
       retries: 5
     networks:
       - sure_net
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 512M
+        reservations:
+          cpus: '0.10'
+          memory: 64M
 
 networks:
   sure_net:

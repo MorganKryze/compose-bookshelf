@@ -13,6 +13,14 @@ services:
       - 5001
     networks:
       - pangolin
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 128M
 
 networks:
   pangolin:

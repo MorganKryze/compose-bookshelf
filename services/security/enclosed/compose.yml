@@ -8,13 +8,21 @@ services:
     security_opt:
       - no-new-privileges:true
     volumes:
-      - ${VOLUMES_PATH}/enclosed:/app/.data
+      - ${DOCKER_VOLUMES_PATH}/enclosed:/app/.data
     expose:
-        - 8787
+      - 8787
     networks:
       - pangolin
     labels:
       com.centurylinklabs.watchtower.enable: true
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
 
 networks:
   pangolin:

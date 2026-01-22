@@ -17,6 +17,14 @@ services:
       - 8083
     networks:
       - pangolin
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
 
 networks:
   pangolin:

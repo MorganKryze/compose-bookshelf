@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
+    env_file:
+      - .env
     volumes:
       - ${DOCKER_VOLUMES_PATH}/kutt/db_data_sqlite:/var/lib/kutt
       - ${DOCKER_VOLUMES_PATH}/kutt/custom:/kutt/custom
@@ -14,6 +16,14 @@ services:
       - pangolin
     labels:
       com.centurylinklabs.watchtower.enable: true
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
 
 networks:
   pangolin:
